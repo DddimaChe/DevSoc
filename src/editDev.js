@@ -21,13 +21,13 @@ export class EditDev extends Component {
             prevSkills: props.developer.skills.join(","), skills,
         }
     }
-    handleNameChange(e) {
+    handleNameChange = e => {
         this.setState({name: e.target.value});
     }
-    handleSkillsChange(e){
+    handleSkillsChange = e =>{
         this.setState({skills: e.target.value});
     }
-    handleEdit(e){
+    handleEdit = e => {
         e.preventDefault();
         const  onEdit = this.props.onEdit;
         const currentlyEditing =this.props.currentlyEditing;
@@ -36,7 +36,7 @@ export class EditDev extends Component {
         let skills = this.state.skills.split(regExp);
         onEdit(name, skills, currentlyEditing);
     }
-    handleCancel(){
+    handleCancel = () => {
         const onEditModal = this.props.onEditModal;
         this.setState({name: this.props.developer.name, skills:this.props.developer.skills.join(",")});
         onEditModal();

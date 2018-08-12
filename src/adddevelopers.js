@@ -5,18 +5,14 @@ export class AddDev extends Component{
     constructor(props){
         super(props);
         this.state = {name: "", skills: ""};
-        this.handleDevNameChange = this.handleDevNameChange.bind(this);
-        this.handleSkillsChange = this.handleSkillsChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCancel = this.handleCancel.bind(this);
     }
-    handleDevNameChange(e) {
+    handleDevNameChange = e => {
         this.setState({name: e.target.value});
     }
-    handleSkillsChange(e){
+    handleSkillsChange = e =>{
         this.setState({skills: e.target.value});
     }
-    handleSubmit(e){
+    handleSubmit = e => {
         e.preventDefault();
         const onAdd = this.props.onAdd;
         const regExp = /\s*,\s*/;
@@ -26,7 +22,7 @@ export class AddDev extends Component{
         onAdd(newDev);
         this.setState({name: "", skills: ""});
     }
-    handleCancel(){
+    handleCancel = () => {
         const onAddModal = this.props.onAddModal;
         this.setState({name: "", skills: ""});
         onAddModal();

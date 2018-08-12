@@ -19,34 +19,29 @@ class Describe extends React.Component {
             showEdit: false,
             currentlyEditing: 0
         };
-        this.showAddModal = this.showAddModal.bind(this);
-        this.showEditModal = this.showEditModal.bind(this);
-        this.editDev = this.editDev.bind(this);
-        this.addDev = this.addDev.bind(this);
-        this.deleteDev = this.deleteDev.bind(this);
     }
 
-    showAddModal() {
+    showAddModal = () => {
         this.setState({showAdd: !this.state.showAdd})
     }
-    showEditModal(index){
+    showEditModal= index =>{
         this.setState({showEdit: !this.state.showEdit, currentlyEditing: index});
     }
 
-    addDev(developer){
+    addDev = developer => {
         let developers = this.state.developers;
         developers.push(developer);
         this.setState({developers: developers});
         this.showAddModal();
     }
 
-    editDev(newName, newSkills, currentlyEditing) {
+    editDev = (newName, newSkills, currentlyEditing) => {
         let developers = this.state.developers;
         developers[currentlyEditing] = {name: newName, skills: newSkills};
         this.setState({developers: developers});
         this.showEditModal(currentlyEditing);
     }
-    deleteDev(index) {
+    deleteDev = index => {
         let developers = this.state.developers.slice();
         developers.splice(index,1);
         this.setState({developers: developers, currentlyEditing: 0});
